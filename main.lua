@@ -1,9 +1,33 @@
------ text
+
+
+---Testade lite saker som jag inte hann bli klar med
+
+-- Menu = function ()
+--     love.draw = function ()
+--         love.graphics.setColor(1, 0, 0)
+--         love.graphics.setFont(VeryBigFont)
+--         love.graphics.print("Tappers", 150, 200)
+
+--         love.graphics.print("play", 200, 300)
+
+--         ---Description
+--     love.graphics.setFont(smal)
+--     love.graphics.setColor(20, 20, 20, 20)
+--     love.graphics.print("Press the button to gain money.", 0, 550)
+--     love.graphics.print("Use the money to buy a bonus to your money making skills", 0, 570)
+
+--     end
+--     ---MousePressinMenu
+--    MenuMouse = function love.mousepressed()
+--             if distanceBetween(button.x, button.y, love.mouse.getX(), love.mouse.getY()) < button.size then
+--             end
+--         end
+
 function love.load()
 --Music & Sound
-src1 = love.audio.newSource("GameMusic.mp3", "stream")
-src2 = love.audio.newSource("Quack.mp3", "static")
-src3 = love.audio.newSource("Victory.mp3", "static")
+src1 = love.audio.newSource("Mp3/GameMusic.mp3", "stream")
+src2 = love.audio.newSource("Mp3/Quack.mp3", "static")
+src3 = love.audio.newSource("Mp3/Victory.mp3", "static")
 
 scr1Loop = src1:setLooping(true)
 src1:play()
@@ -45,14 +69,14 @@ smaller = love.graphics.newFont(15)
 end
 
 function love.update()
-    if love.keyboard.isDown("right") then
-        money = 0
-    end
+    --if love.keyboard.isDown("right") then
+      --  money = 0
+    --end
 
-    if love.keyboard.isDown("left") then
-        money = money + 100
-    end
-end
+    --if love.keyboard.isDown("left") then
+     --   money = money + 100
+   -- end
+--end
 --mousepressed
     function love.mousepressed( x, y, b, istouch )
         if b == 1 then
@@ -75,6 +99,7 @@ end
             end
         end
     end
+end
 ---
 
 --Math
@@ -83,7 +108,8 @@ end
     end
 
 function love.draw()
-    ---Button
+ ---Button
+    love.graphics.setFont(Font)
     love.graphics.setColor(255, 0, 0)
     love.graphics.circle("fill", button.x, button.y, 100, button.size)
     love.graphics.setColor(255, 0, 255)
@@ -120,14 +146,16 @@ function love.draw()
     love.graphics.print("1000", 35, 380, 0, 1)
     love.graphics.setFont(smaller)
     love.graphics.print("Bonus + 10", 22, 400, 0, 1)
+
 ---Description
-love.graphics.setFont(smal)
-love.graphics.setColor(20, 20, 20, 20)
-love.graphics.print("Press the botton to gain money.", 0, 550)
-love.graphics.print("Use the money to by a bonus on your money gaining skills", 0, 570)
+    love.graphics.setFont(smal)
+    love.graphics.setColor(20, 20, 20, 20)
+    love.graphics.print("Press the button to gain money.", 0, 500)
+    love.graphics.print("Use the money to buy a bonus to your money making skills", 0, 520)
+    love.graphics.print("Get to 100 000 money and win The Tapping Game", 0, 540)
 
 ---Endscreen
-if money > 1000000 then
+if money > 100000 then
     love.graphics.setColor(255, 0, 0)
     love.graphics.rectangle("fill", 0, 0, 800, 600)
     love.graphics.setColor(0, 255, 0)
