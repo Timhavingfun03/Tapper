@@ -1,14 +1,12 @@
-
-
 ---Testade lite saker som jag inte hann bli klar med
 
 -- Menu = function ()
 --     love.draw = function ()
 --         love.graphics.setColor(1, 0, 0)
+--         love.graphics.print("play", PlayButton.x, PlayButton.y, PlayButton.size)
+
 --         love.graphics.setFont(VeryBigFont)
 --         love.graphics.print("Tappers", 150, 200)
-
---         love.graphics.print("play", 200, 300)
 
 --         ---Description
 --     love.graphics.setFont(smal)
@@ -17,11 +15,19 @@
 --     love.graphics.print("Use the money to buy a bonus to your money making skills", 0, 570)
 
 --     end
+--         ---StarterSetup
+--     PlayButton = {}
+--     PlayButton.x = 200
+--     PlayButton.y = 300
+--     PlayButton.size = 50
+    
 --     ---MousePressinMenu
---    MenuMouse = function love.mousepressed()
---             if distanceBetween(button.x, button.y, love.mouse.getX(), love.mouse.getY()) < button.size then
+--    function love.mousepressed()
+--             if distanceBetween(PlayButton.x, PlayButton.y, love.mouse.getX(), love.mouse.getY()) < PlayButton.size then
+                
 --             end
 --         end
+--     end
 
 function love.load()
 --Music & Sound
@@ -73,10 +79,10 @@ function love.update()
       --  money = 0
     --end
 
-    --if love.keyboard.isDown("left") then
-     --   money = money + 100
-   -- end
---end
+    if love.keyboard.isDown("left") then
+       money = money + 100
+   end
+
 --mousepressed
     function love.mousepressed( x, y, b, istouch )
         if b == 1 then
@@ -85,6 +91,7 @@ function love.update()
                 money = money + bonus
             end
         end
+        
 --Store
          if  money > 99 then  
             if distanceBetween(store1.x, store1.y, love.mouse.getX(), love.mouse.getY()) < store1.size then
@@ -100,7 +107,6 @@ function love.update()
         end
     end
 end
----
 
 --Math
     function distanceBetween(x1, y1, x2, y2)
@@ -122,6 +128,7 @@ function love.draw()
     love.graphics.print("Bonus:", 0, 65)
     love.graphics.setColor(255, 0, 255)
     love. graphics.print(bonus, 200, 65)
+
 ---Money
     love.graphics.setColor(255, 0, 0)
     love.graphics.setFont(BigFont)
@@ -152,10 +159,10 @@ function love.draw()
     love.graphics.setColor(20, 20, 20, 20)
     love.graphics.print("Press the button to gain money.", 0, 500)
     love.graphics.print("Use the money to buy a bonus to your money making skills", 0, 520)
-    love.graphics.print("Get to 100 000 money and win The Tapping Game", 0, 540)
+    love.graphics.print("Get to 1 000 000 money and win The Tapping Game", 0, 540)
 
 ---Endscreen
-if money > 100000 then
+if money > 1000000 then
     love.graphics.setColor(255, 0, 0)
     love.graphics.rectangle("fill", 0, 0, 800, 600)
     love.graphics.setColor(0, 255, 0)
@@ -166,6 +173,7 @@ if money > 100000 then
     src1Loop = src1:setLooping(false)
     src1:stop()
     src3:play()
-end
+        end
+    end
 
-end
+--- Bara en snabb komentar. Hade velat göra fler shops och fler uppgraderingar men jag mysslyckades många gånger och det är lite försent att börja just nu (12/04/2021  01:47)
